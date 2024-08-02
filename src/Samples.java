@@ -228,12 +228,8 @@ public class Samples {
         return nums.stream().sorted(Integer::compareTo).collect(Collectors.toList());
     }
 
-
-
-
     public static boolean isEven(int n) {
         return n%2==0;
     }
-
 
 }
