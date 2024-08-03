@@ -11,31 +11,17 @@ public class EmployeeSorting {
         employees.add(new Employee("Bob", 25));
         employees.add(new Employee("Charlie", 30));
 
-        employees.sort(Comparator.comparing(Employee::getAge).thenComparing(Employee::getName));
+        employees.sort(Comparator.comparing(Employee::age).thenComparing(Employee::name));
 
         System.out.println(employees);
     }
 }
 
-class Employee {
-    private String name;
-    private int age;
-
-    public Employee(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
+record Employee(String name, int age) {
 
     @Override
     public String toString() {
         return "Employee{name='" + name + "', age=" + age + '}';
     }
+
 }
