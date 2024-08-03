@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -81,7 +82,7 @@ public class Samples {
         List<String> results = new ArrayList<>();
 
         for (int i = 1; i <= n; i++) {
-            String result = "";
+            String result;
 
             if (i % 3 == 0 && i % 5 == 0) {
                 result = "fizzbuzz";
@@ -103,6 +104,7 @@ public class Samples {
     public static List<Integer> getRandomIntegers(int n, int size) {
 
         SecureRandom secureRandom = new SecureRandom();
+//        return secureRandom.ints(size, 0, n).mapToObj(Integer::valueOf).collect(Collectors.toList());
         return secureRandom.ints(size, 0, n).boxed().collect(Collectors.toList());
 
     }
@@ -184,17 +186,25 @@ public class Samples {
         return words.stream().collect(Collectors.groupingBy(String::length));
     }
 
-    public static int fibonacci(int n) {
-        if(n == 0){
+    public static int fibonacciIterative(int n) {
+        if (n <= 1) {
             return n;
         }
-        int a= 0, b = 1, c;
+
+        int a= 0, b = 1, c = 0;
         for (int i=1; i<=n; i++) {
             c = a + b;
             a = b;
-            b = a;
+            b = c;
         }
-        return b;
+        return c;
+    }
+
+    public static int fibonacciRecursive(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
     }
 
     public static Set<Integer> findDuplicates(List<Integer> nums) {

@@ -104,14 +104,16 @@ public class Main {
 //                .sum();
 //        System.out.println(sum);
 
-        Map<String, Integer> map = new HashMap<>();
-        map.put("one", 1);
-        map.put("two", 2);
-        map.put("three", 3);
-        map.computeIfAbsent("four", k -> 4);
-        map.computeIfPresent("two", (k, v) -> v + 1);
-        System.out.println(map);
+//        Map<String, Integer> map = new HashMap<>();
+//        map.put("one", 1);
+//        map.put("two", 2);
+//        map.put("three", 3);
+//        map.computeIfAbsent("four", k -> 4);
+//        map.computeIfPresent("two", (k, v) -> v + 1);
+//        System.out.println(map);
 
+        Map<Integer, List<String>> groupByLength = Samples.groupByLength(List.of("apple", "banana", "cherry"));
+        System.out.println("groupByLength : " + groupByLength);
 
     }
 }
