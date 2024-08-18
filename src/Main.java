@@ -112,8 +112,8 @@ public class Main {
 //        map.computeIfPresent("two", (k, v) -> v + 1);
 //        System.out.println(map);
 
-        Map<Integer, List<String>> groupByLength = Samples.groupByLength(List.of("apple", "banana", "cherry"));
-        System.out.println("groupByLength : " + groupByLength);
+//        Map<Integer, List<String>> groupByLength = Samples.groupByLength(List.of("apple", "banana", "cherry"));
+//        System.out.println("groupByLength : " + groupByLength);
 
     }
 }
