@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -24,14 +25,21 @@ public class DSAExamples {
 //            System.out.println(Arrays.toString(interval));
 //        }
 
-        int[] nums1 = {1, 3};
-        int[] nums2 = {2};
-        System.out.println("Median: " + findMedianSortedArrays(nums1, nums2));  // Output: 2.0
+//        int[] nums1 = {1, 3};
+//        int[] nums2 = {2};
+//        System.out.println("Median: " + findMedianSortedArrays(nums1, nums2));  // Output: 2.0
+//
+//
+//        int[] nums3 = {1, 2};
+//        int[] nums4 = {3, 4};
+//        System.out.println("Median: " + findMedianSortedArrays(nums3, nums4));  // Output: 2.5
 
+//        int[] nums = {3,2,1,5,6,4};
+//        int k = 2;
+//        System.out.println("The " + k + "-th largest element is: " + findKthLargest(nums, k));  // Output: 5
 
-        int[] nums3 = {1, 2};
-        int[] nums4 = {3, 4};
-        System.out.println("Median: " + findMedianSortedArrays(nums3, nums4));  // Output: 2.5
+        int[] topKFrequentElements = topKFrequentElements(new int[]{1, 1, 1, 2, 2, 3}, 3);
+        System.out.println("topKFrequentElements : " + Arrays.toString(topKFrequentElements));
 
     }
 
@@ -194,5 +202,93 @@ public class DSAExamples {
 
         return result;
 
+    }
+
+    /*
+     * The problem of finding the number of distinct ways to climb a staircase
+     * where you can take 1 or 2 steps at a time is a classic dynamic programming problem.
+     * The key insight is that the number of ways to reach step n is the sum of the ways
+     * to reach step n-1 and the ways to reach step n-2.
+     */
+    public static int climbStairs(int n) {
+        // Base cases
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+
+        // Variables to store the number of ways to reach the last two steps
+        int oneStepBefore = 2;
+        int twoStepsBefore = 1;
+        int allWays = 0;
+
+        // Loop to calculate the number of ways for each step from 3 to n
+        for (int i = 3; i <= n; i++) {
+            allWays = oneStepBefore + twoStepsBefore;
+            twoStepsBefore = oneStepBefore;
+            oneStepBefore = allWays;
+        }
+
+        return allWays;
+    }
+
+    /*
+    Given an integer array nums and an integer k, return the kth largest element in the array.
+    int[] nums = {3,2,1,5,6,4};
+    int k = 2;
+    Output: 5  // Because the second largest element is 5.
+     */
+    public static int findKthLargest(int[] nums, int k) {
+        List<Integer> numsSorted = IntStream.of(nums).boxed().sorted().distinct().toList();
+        return numsSorted.get(numsSorted.size() - k);
+
+    }
+
+    public static int[] topKFrequentElements(int[] nums, int k) {
+
+        return IntStream.of(nums)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .filter(e -> e.getValue() >= k)
+                .map(Map.Entry::getKey)
+                .mapToInt(Integer::valueOf)
+                .toArray();
+
+    }
+
+    public static boolean isValidParenthesis(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if(c == '[' || c == '{' || c == '(') {
+                stack.push(c);
+            } else if(c == ']' || c == '}' || c == ')') {
+                if(stack.isEmpty()) {
+                    return false;
+                }
+
+                char top = stack.pop();
+                if((c == ']' && top != '[')
+                    || (c == '}' && top != '{')
+                    || (c == ')' && top != '(')) {
+
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public int lengthOfLongestSubstring2(String s) {
+        int n = s.length();
+        int maxLen = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0, j = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j)) + 1, i);
+            }
+            maxLen = Math.max(maxLen, j - i + 1);
+            map.put(s.charAt(j), j);
+        }
+        return maxLen;
     }
 }

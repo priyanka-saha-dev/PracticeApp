@@ -242,4 +242,29 @@ public class Samples {
         return n%2==0;
     }
 
+    public static boolean canConstructR(String s1, String s2, String R) {
+
+        boolean canConstruct = true;
+
+        List<Character> s1Char = s1 != null ? s1.chars().mapToObj(c -> (char) c).toList() : Collections.emptyList();
+        List<Character> s2Char = s2 != null ? s2.chars().mapToObj(c -> (char) c).toList() : Collections.emptyList();
+        List<Character> rChar = R != null ? R.chars().mapToObj(c -> (char) c).toList() : Collections.emptyList();
+
+        if(rChar.isEmpty()) {
+            canConstruct = false;
+        } else {
+            for (char c : R.toCharArray()) {
+                if(!s1Char.contains(c) || !s2Char.contains(c)) {
+                    canConstruct = false;
+                    break;
+                }
+            }
+        }
+
+
+        return canConstruct;
+    }
+
+
+
 }
