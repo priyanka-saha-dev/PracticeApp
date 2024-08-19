@@ -8,35 +8,34 @@ public class DSAExamples {
 
     public static void main(String[] args) {
 
-//        int[] arr = {1, 2, 3, 4, 5};
-//        int[] prod = productExceptSelf(arr);
-//        System.out.println("productExceptSelf: " + Arrays.toString(prod));
-//
-//        int[] nums = {2, 17, 11, 7};
-//        int target = 9;
-//        int[] pos = twoSumProblem(nums, target);
-//        System.out.println("twoSumProblem: " + Arrays.toString(pos));
+        int[] arr = {1, 2, 3, 4, 5};
+        int[] prod = productExceptSelf(arr);
+        System.out.println("productExceptSelf: " + Arrays.toString(prod));
 
-//        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-//        int[][] result = mergeIntervals(intervals);
-//
-//        System.out.println("Merged Intervals:");
-//        for (int[] interval : result) {
-//            System.out.println(Arrays.toString(interval));
-//        }
+        int[] nums = {2, 17, 11, 7};
+        int target = 9;
+        int[] pos = twoSumProblem(nums, target);
+        System.out.println("twoSumProblem: " + Arrays.toString(pos));
 
-//        int[] nums1 = {1, 3};
-//        int[] nums2 = {2};
-//        System.out.println("Median: " + findMedianSortedArrays(nums1, nums2));  // Output: 2.0
-//
-//
-//        int[] nums3 = {1, 2};
-//        int[] nums4 = {3, 4};
-//        System.out.println("Median: " + findMedianSortedArrays(nums3, nums4));  // Output: 2.5
+        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] result = mergeIntervals(intervals);
 
-//        int[] nums = {3,2,1,5,6,4};
-//        int k = 2;
-//        System.out.println("The " + k + "-th largest element is: " + findKthLargest(nums, k));  // Output: 5
+        System.out.println("Merged Intervals:");
+        for (int[] interval : result) {
+            System.out.println(Arrays.toString(interval));
+        }
+
+        int[] nums1 = {1, 3};
+        int[] nums2 = {2};
+        System.out.println("Median: " + findMedianSortedArrays(nums1, nums2));  // Output: 2.0
+
+
+        int[] nums3 = {1, 2};
+        int[] nums4 = {3, 4};
+        System.out.println("Median: " + findMedianSortedArrays(nums3, nums4));  // Output: 2.5
+
+        int k = 2;
+        System.out.println("The " + k + "-th largest element is: " + findKthLargest(new int[]{3,2,1,5,6,4}, k));  // Output: 5
 
         int[] topKFrequentElements = topKFrequentElements(new int[]{1, 1, 1, 2, 2, 3}, 3);
         System.out.println("topKFrequentElements : " + Arrays.toString(topKFrequentElements));
