@@ -160,6 +160,7 @@ public class ListNodeExamples {
         }
 
         List<Integer> nodes = Stream.of(nodes1, nodes2).flatMap(Collection::stream).sorted().toList();
+//        List<Integer> nodes = Stream.concat(nodes1.stream(), nodes2.stream()).toList();
 
         ListNode headR = new ListNode(0);
         ListNode temp = headR;
@@ -172,7 +173,6 @@ public class ListNodeExamples {
         return headR.next;
 
     }
-
 }
 
 

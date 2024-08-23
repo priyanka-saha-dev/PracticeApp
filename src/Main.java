@@ -115,5 +115,26 @@ public class Main {
 //        Map<Integer, List<String>> groupByLength = Samples.groupByLength(List.of("apple", "banana", "cherry"));
 //        System.out.println("groupByLength : " + groupByLength);
 
+//        Comparator<String> comparator = new Comparator<String>() {
+//            @Override
+//            public int compare(String s1, String s2) {
+//                return s1.compareTo(s2);
+//            }
+//        };
+
+//        int i = 5;
+//        long l = i;
+//        float f = i;
+//        double d = i;
+//        System.out.println(i + " :: " + l + " :: " + f + " :: " + d);
+
+//        double d = 5d;
+//        System.out.println(d);
+//        int f = (int) d;
+//        System.out.println(f);
+
+        int fib = Samples.fibonacciIterative(5);
+        System.out.println(fib);
+
     }
 }
