@@ -130,23 +130,6 @@ return 0;
         }
 
         return maxArea;
-
-//        int left = 0;
-//        int right = height.length - 1;
-//        int maxArea = 0;
-//
-//        while (left < right) {
-//            int currentArea = Math.min(height[left], height[right]) * (right - left);
-//            maxArea = Math.max(maxArea, currentArea);
-//
-//            if (height[left] < height[right]) {
-//                left++;
-//            } else {
-//                right--;
-//            }
-//        }
-//
-//        return maxArea;
     }
 
     public static int reverseNumber(int num) {
@@ -464,33 +447,6 @@ return 0;
 
     public static int lengthOfLongestPalindrome(String s) {
 
-//        long result = 0;
-//
-//        Map<Character, Long> countMap = s.chars().mapToObj(c -> (char) c)
-//                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
-//
-//        boolean isFirstOdd = false;
-//
-//        for (Map.Entry<Character, Long> e : countMap.entrySet()) {
-//            char ch = e.getKey();
-//            long count = e.getValue();
-//
-//            result += count;
-//
-//            if(count % 2 != 0) {
-//                result += count;
-//
-//                if(!isFirstOdd) {
-//                    isFirstOdd = true;
-//                } else {
-//                    result--;
-//                }
-//            }
-//
-//        }
-//
-//        return (int) result;
-
         Map<Character, Long> hm = s.chars().mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 
@@ -602,33 +558,6 @@ return 0;
     }
 
     public static int maximumProfit(int[] prices) {
-
-//        int totalProfit = 0;
-//
-//        for (int i = 0; i < nums.length; i++) {
-//            int stockBoughtAtPrice = nums[i];
-//
-//            Map<Integer, Integer> profitsWithSoldDay = new HashMap<>();
-//            for (int j = i + 1; j < nums.length; j++) {
-//                int stockSoldAtPrice = nums[j];
-//                int stockPrice = Math.subtractExact(stockSoldAtPrice, stockBoughtAtPrice);
-//                profitsWithSoldDay.put(stockPrice, j);
-//
-//            }
-//
-//            Optional<Map.Entry<Integer, Integer>> maxProfitEntry = profitsWithSoldDay.entrySet().stream()
-//                    .filter(e -> e.getKey() > 0)
-//                    .max(Comparator.comparingInt(Map.Entry::getKey));
-//
-//            if(maxProfitEntry.isPresent()) {
-//                Integer maxProfit = maxProfitEntry.map(Map.Entry::getKey).orElse(0);
-//                Integer maxProfitDay = maxProfitEntry.map(Map.Entry::getValue).orElse(0);
-//                totalProfit += maxProfit;
-//                i = maxProfitDay+1;
-//            }
-//        }
-//
-//        return totalProfit;
 
         int stockBuyPrice = prices[0];
         int maxProfit = 0;
@@ -742,14 +671,8 @@ return 0;
                     System.out.println("Sublist : " + sub + " with product : " + product);
 
                 }
-//                Optional<Integer> product = sub.stream().reduce((x, y) -> x * y);
-//                product.filter(p -> p < k).ifPresent(p -> {
-//                    allSublists.add(sub);
-//                    System.out.println("Sublist : " + sub + " with product : " + p);
-//                });
             }
         }
-
 
         return allSublists.size();
 
@@ -811,7 +734,7 @@ return 0;
     public static int maxSubarrayLengthIncomplete(int[] nums, int k) {
         List<Integer> list = Arrays.stream(nums).boxed().toList();
 
-        List<List<Integer>> getAllTheSubLists = getAllTheSubLists(list)
+        List<List<Integer>> getAllTheSubLists = getAllSubLists(list)
                 .stream()
                 .filter(integers -> integers.size() <= k)
                 .toList();
@@ -819,21 +742,5 @@ return 0;
         List<Integer> maxList = Collections.max(getAllTheSubLists, Comparator.comparing(List::size));
 
         return maxList.size();
-    }
-
-    public static List<List<Integer>> getAllTheSubLists(List<Integer> list) {
-        List<List<Integer>> subLists = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = i+1; j <= list.size(); j++) {
-                List<Integer> subList = list.subList(i, j);
-                if(!subList.isEmpty()) {
-                    subLists.add(subList);
-                }
-
-            }
-        }
-
-        return subLists;
     }
 }

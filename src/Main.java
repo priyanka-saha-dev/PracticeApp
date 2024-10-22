@@ -133,8 +133,14 @@ public class Main {
 //        int f = (int) d;
 //        System.out.println(f);
 
-        int fib = Samples.fibonacciIterative(5);
-        System.out.println(fib);
+//        int fib = Samples.fibonacciIterative(5);
+//        System.out.println(fib);
+
+        String key = "A";
+        int h;
+        int hash = (h = key.hashCode()) ^ h >>> 16;
+        int index = (5 - 1) & hash;
+        System.out.println(index);
 
     }
 }

@@ -39,7 +39,9 @@ public class CommentsTest {
     }
 
     List<Comments> sortByDescending(List<Comments> allComments) {
-        allComments.sort(Comparator.comparing(Comments::getDate).thenComparing(Comments::getId));
+        Comparator<Comments> commentsComparator = Comparator.comparing(Comments::getDate).thenComparing(Comments::getId);
+        allComments.sort(commentsComparator);
+//        Collections.sort(allComments, commentsComparator); // same as above
         return allComments;
     }
 }
