@@ -1,5 +1,4 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+package threads;
 
 class Resource {
     public synchronized void methodA(Resource r) {
