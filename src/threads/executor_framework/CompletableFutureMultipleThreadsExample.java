@@ -1,4 +1,4 @@
-package async;
+package threads.executor_framework;
 
 import java.util.concurrent.*;
 
