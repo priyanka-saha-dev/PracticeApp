@@ -1,4 +1,4 @@
-package singleton;
+package patterns.singleton;
 
 import java.io.Serializable;
 import java.util.List;

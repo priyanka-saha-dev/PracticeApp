@@ -1,6 +1,12 @@
 Samples for Practice 
-
-  - JDK17
+  - Threads
+  - DSA Algo
 
 
 Codility Lessons - https://app.codility.com/programmers/lessons
+
+Design Patterns - 
+- Singleton
+- Builder
+- Factory
+- 
