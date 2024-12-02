@@ -17,7 +17,7 @@ public class TransientExample {
         // Deserialize the user object
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("resources/user.ser"))) {
             User deserializedUser = (User) ois.readObject();
-            System.out.println(deserializedUser); // Output: User{username='john_doe', password='null'}
+            System.out.println(deserializedUser); // Output: threads.User{username='john_doe', password='null'}
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

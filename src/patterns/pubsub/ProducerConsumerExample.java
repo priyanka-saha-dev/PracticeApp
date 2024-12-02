@@ -1,3 +1,5 @@
+package patterns.pubsub;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

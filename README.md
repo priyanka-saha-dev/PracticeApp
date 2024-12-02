@@ -9,4 +9,5 @@ Design Patterns -
 - Singleton
 - Builder
 - Factory
-- 
+- Pub/Sub Pattern
+- Observer

@@ -1,13 +1,18 @@
 package patterns.builder;
 
+import patterns.observer.PolicyObserver;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Policy {
 
     private final String id;
-    private final LocalDateTime timestamp;
-
+    private LocalDateTime timestamp;
     private final PolicyHolder policyholder;
+
+    private final List<PolicyObserver> policyObservers = new ArrayList<>(); /* Observer Pattern Changes */
 
     private Policy(PolicyBuilder builder) {
         this.id = builder.id;
@@ -31,6 +36,21 @@ public class Policy {
         return new PolicyBuilder();
     }
 
+    /* Observer Pattern Changes */
+    public void addObserver(PolicyObserver policyObserver) {
+        this.policyObservers.add(policyObserver);
+    }
+
+    public void notifyObserver(String event) {
+        this.policyObservers.forEach(o -> o.notify(this, event));
+    }
+
+    //Trigger Event
+    public void trigger(LocalDateTime timestamp, String event) {
+        this.timestamp = timestamp;
+        notifyObserver(event);
+    }
+    /* Observer Pattern Changes */
 
     public static class PolicyBuilder {
 

@@ -26,7 +26,7 @@ public class CompletableFutureMultipleThreadsExample {
         // Combine results of Task 1 and Task 2
         CompletableFuture<String> combinedResult = fetchUserData.thenCombine(fetchAccountData, (user, balance) -> {
             System.out.println("Combining results on thread: " + Thread.currentThread().getName());
-            return "User: " + user + ", Balance: $" + balance;
+            return "threads.User: " + user + ", Balance: $" + balance;
         });
 
         // Attach a final callback to process the combined result

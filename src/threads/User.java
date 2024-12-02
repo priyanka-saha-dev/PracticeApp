@@ -1,3 +1,5 @@
+package threads;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -13,6 +15,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{username='" + username + "', password='" + password + "'}";
+        return "threads.User{username='" + username + "', password='" + password + "'}";
     }
 }
